@@ -3,8 +3,13 @@
  */
 package com.bhuwan.jsf.managedbeans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import com.bhuwan.jsf.custompojos.Person;
 
 /**
  * @author bhuwan
@@ -18,6 +23,7 @@ public class AnimalBean {
 	private String totalNo;
 	private String password;
 	private Boolean mailMe;
+	private int[] selectedPeople;
 
 	/**
 	 * @return the type
@@ -51,7 +57,22 @@ public class AnimalBean {
 
 	public String saveAnimal() {
 		System.out.println("Saving Animal..........");
+		for (int i : selectedPeople) {
+			System.out.println("Selected people: " + i);
+		}
 		return null;
+	}
+
+	public List<Person> getAllperson() {
+		List<Person> persons = new ArrayList<Person>();
+		Person p = new Person();
+		p.setId(1);
+		p.setName("Bhuwan");
+		persons.add(p);
+		persons.add(new Person(2, "Suman"));
+		persons.add(new Person(3, "Krishna"));
+		persons.add(new Person(4, "Bimal"));
+		return persons;
 	}
 
 	/**
@@ -82,6 +103,21 @@ public class AnimalBean {
 	 */
 	public void setMailMe(Boolean mailMe) {
 		this.mailMe = mailMe;
+	}
+
+	/**
+	 * @return the selectedPeople
+	 */
+	public int[] getSelectedPeople() {
+		return selectedPeople;
+	}
+
+	/**
+	 * @param selectedPeople
+	 *            the selectedPeople to set
+	 */
+	public void setSelectedPeople(int[] selectedPeople) {
+		this.selectedPeople = selectedPeople;
 	}
 
 }

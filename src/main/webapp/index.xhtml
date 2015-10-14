@@ -34,9 +34,29 @@
 
 		</p>
 		<p>
-			<!-- Boolean Checkbox -->
+			<!-- Select Boolean Checkbox -->
 			Do you like to receive mail ?
 			<h:selectBooleanCheckbox value="#{animalBean.mailMe}" />
+		</p>
+
+		<!-- <p>
+			Select Many Checkbox
+			<h:selectManyCheckbox value="#{animalBean.selectedPeople}">
+				<f:selectItem itemLabel="Bhuwan" itemValue="0" />
+				<f:selectItem itemLabel="Prisha" itemValue="1" />
+				<f:selectItem itemLabel="Pratiksha" itemValue="2" />
+				<f:selectItem itemLabel="Nabin" itemValue="3" />
+				<f:selectItem itemLabel="Suman" itemValue="4" />
+
+			</h:selectManyCheckbox>
+		</p> -->
+
+		<p>
+			<!-- Select Many Checkbox -->
+			<h:selectManyCheckbox value="#{animalBean.selectedPeople}">
+				<f:selectItems value="#{animalBean.allperson}" var="p"
+					itemValue="#{p.id}" itemLabel="#{p.name}" />
+			</h:selectManyCheckbox>
 		</p>
 		<p>
 			<!-- method binding-->
