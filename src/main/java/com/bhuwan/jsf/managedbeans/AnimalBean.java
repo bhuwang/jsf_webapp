@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.bhuwan.jsf.managedbeans;
 
@@ -16,6 +16,8 @@ public class AnimalBean {
 
 	private String type;
 	private String totalNo;
+	private String password;
+	private Boolean mailMe;
 
 	/**
 	 * @return the type
@@ -45,6 +47,41 @@ public class AnimalBean {
 	 */
 	public void setTotalNo(String totalNo) {
 		this.totalNo = totalNo;
+	}
+
+	public String saveAnimal() {
+		System.out.println("Saving Animal..........");
+		return null;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password
+	 *            the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the mailMe
+	 */
+	public Boolean getMailMe() {
+		return mailMe;
+	}
+
+	/**
+	 * @param mailMe
+	 *            the mailMe to set
+	 */
+	public void setMailMe(Boolean mailMe) {
+		this.mailMe = mailMe;
 	}
 
 }
