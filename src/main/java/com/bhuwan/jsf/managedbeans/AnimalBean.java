@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import com.bhuwan.jsf.custompojos.Person;
@@ -24,6 +25,9 @@ public class AnimalBean {
 	private String password;
 	private Boolean mailMe;
 	private int[] selectedPeople;
+	// example of bean injection using manageproperty annotation
+	@ManagedProperty(value = "#{mySessionBean}")
+	private MySessionBean mySessionBean;
 
 	/**
 	 * @return the type
@@ -57,10 +61,14 @@ public class AnimalBean {
 
 	public String saveAnimal() {
 		System.out.println("Saving Animal..........");
-		for (int i : selectedPeople) {
-			System.out.println("Selected people: " + i);
+		try {
+			for (int i : selectedPeople) {
+				System.out.println("Selected people: " + i);
+			}
+		} catch (Exception e) {
+			return "failure";
 		}
-		return null;
+		return "success";
 	}
 
 	public List<Person> getAllperson() {
@@ -118,6 +126,21 @@ public class AnimalBean {
 	 */
 	public void setSelectedPeople(int[] selectedPeople) {
 		this.selectedPeople = selectedPeople;
+	}
+
+	/**
+	 * @return the mySessionBean
+	 */
+	public MySessionBean getMySessionBean() {
+		return mySessionBean;
+	}
+
+	/**
+	 * @param mySessionBean
+	 *            the mySessionBean to set
+	 */
+	public void setMySessionBean(MySessionBean mySessionBean) {
+		this.mySessionBean = mySessionBean;
 	}
 
 }

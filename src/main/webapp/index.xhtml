@@ -61,6 +61,7 @@
 		<p>
 			<!-- method binding-->
 			<h:commandButton value="Save" action="#{animalBean.saveAnimal}" />
+			<h:commandButton value="Seen By All" action="all" />
 		</p>
 	</h:form>
 	<h2>Animal Detail Output:</h2>
@@ -76,6 +77,16 @@
 	<p>
 		Total No:
 		<h:outputText value="#{animalBean.totalNo}" />
+	</p>
+	<p>
+		<!-- Bean injection using @ManagedProperty(value = "#{mySessionBean}") annotation example: -->
+		Bean Injection Random Number:
+		<h:outputText value="#{animalBean.mySessionBean.number}" />
+	</p>
+	<p>
+		<!-- EL Operation -->
+		EL Operation - Animal No * 100 :
+		<h:outputText value="#{animalBean.totalNo * 100}" rendered="#{animalBean.totalNo > 0}"/>
 	</p>
 </h:body>
 </html>
