@@ -1,94 +1,98 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-	<title>Add New Animal</title>
-</h:head>
-<h:body>
-	<h1>Add New Animal</h1>
-	<!--if you do not define prependId=false then id will be auto generated and prepended to all the tags inside the form.-->
-	<h:form prependId="false">
-		<p>
-			Animal Type:
-			<h:inputText value="#{animalBean.type}" id="type" />
-		</p>
-		<p>
-			Total No:
-			<!--value binding-->
-			<h:inputText value="#{animalBean.totalNo}" id="totalNo" />
-		</p>
+    <h:head>
+        <title>Add New Animal</title>
+    </h:head>
+    <h:body>
+        <h1>Add New Animal</h1>
+        <!--if you do not define prependId=false then id will be auto generated and prepended to all the tags inside the form.-->
+        <h:form prependId="false">
+            <p>
+                Animal Type:
+                <h:inputText value="#{animalBean.type}" id="type" valueChangeListener="#{animalBean.animalTypeValueChangedEvent}"/>
+            </p>
+            <p>
+                Total No:
+                <!--value binding-->
+                <h:inputText value="#{animalBean.totalNo}" id="total"
+                             converterMessage="Invalid number" />
+                <h:message for="total"></h:message>
+            </p>
 
-		<p>
-			<!-- for html password field-->
-			<h:inputSecret id="password" value="#{animalBean.password}" />
-		</p>
-		<p>
-			<!-- output format-->
-			<h:outputFormat value="Hi {0} ! mobile no {1}">
-				<f:param value="Bhuwan"></f:param>
-				<f:param value="9841411211"></f:param>
-			</h:outputFormat>
+            <p>
+                <!-- for html password field-->
+                <h:inputSecret id="password" value="#{animalBean.password}" />
+            </p>
+            <p>
+                <!-- output format-->
+                <h:outputFormat value="Hi {0} ! mobile no {1}">
+                    <f:param value="Bhuwan"></f:param>
+                    <f:param value="9841411211"></f:param>
+                </h:outputFormat>
 
-		</p>
-		<p>
-			<!-- Select Boolean Checkbox -->
-			Do you like to receive mail ?
-			<h:selectBooleanCheckbox value="#{animalBean.mailMe}" />
-		</p>
+            </p>
+            <p>
+                <!-- Select Boolean Checkbox -->
+                Do you like to receive mail ?
+                <h:selectBooleanCheckbox value="#{animalBean.mailMe}" />
+            </p>
 
-		<!-- <p>
-			Select Many Checkbox
-			<h:selectManyCheckbox value="#{animalBean.selectedPeople}">
-				<f:selectItem itemLabel="Bhuwan" itemValue="0" />
-				<f:selectItem itemLabel="Prisha" itemValue="1" />
-				<f:selectItem itemLabel="Pratiksha" itemValue="2" />
-				<f:selectItem itemLabel="Nabin" itemValue="3" />
-				<f:selectItem itemLabel="Suman" itemValue="4" />
+            <!-- <p>
+                Select Many Checkbox
+                <h:selectManyCheckbox value="#{animalBean.selectedPeople}">
+                        <f:selectItem itemLabel="Bhuwan" itemValue="0" />
+                        <f:selectItem itemLabel="Prisha" itemValue="1" />
+                        <f:selectItem itemLabel="Pratiksha" itemValue="2" />
+                        <f:selectItem itemLabel="Nabin" itemValue="3" />
+                        <f:selectItem itemLabel="Suman" itemValue="4" />
 
-			</h:selectManyCheckbox>
-		</p> -->
+                </h:selectManyCheckbox>
+        </p> -->
 
-		<p>
-			<!-- Select Many Checkbox -->
-			<h:selectManyCheckbox value="#{animalBean.selectedPeople}">
-				<f:selectItems value="#{animalBean.allperson}" var="p"
-					itemValue="#{p.id}" itemLabel="#{p.name}" />
-			</h:selectManyCheckbox>
-		</p>
-		<p>
-			<!-- method binding-->
-			<h:commandButton value="Save" action="#{animalBean.saveAnimal}" />
-			<!-- <h:commandButton value="Seen By All"
-				action="seen-by-all?faces-redirect=true" /> -->
-			<h:commandButton value="Seen By All" action="all"/>
-		</p>
-	</h:form>
-	<h2>Animal Detail Output:</h2>
-	<p>
-		Do you like to receive mail :
-		<!-- method binding-->
-		<h:outputText value="#{animalBean.mailMe}" />
-	</p>
-	<p>
-		Type:
-		<h:outputText value="#{animalBean.type}" />
-	</p>
-	<p>
-		Total No:
-		<h:outputText value="#{animalBean.totalNo}" />
-	</p>
-	<p>
-		<!-- Bean injection using @ManagedProperty(value = "#{mySessionBean}") annotation example: -->
-		Bean Injection Random Number:
-		<h:outputText value="#{animalBean.mySessionBean.number}" />
-	</p>
-	<p>
-		<!-- EL Operation -->
-		EL Operation - Animal No * 100 :
-		<h:outputText value="#{animalBean.totalNo * 100}" rendered="#{animalBean.totalNo > 0}"/>
-	</p>
-</h:body>
+            <p>
+                <!-- Select Many Checkbox -->
+                <h:selectManyCheckbox value="#{animalBean.selectedPeople}">
+                    <f:selectItems value="#{animalBean.allperson}" var="p"
+                                   itemValue="#{p.id}" itemLabel="#{p.name}" />
+                </h:selectManyCheckbox>
+            </p>
+            <p>
+                <!-- method binding-->
+                <h:commandButton value="Save" action="#{animalBean.saveAnimal}" />
+                <!-- <h:commandButton value="Seen By All"
+                action="seen-by-all?faces-redirect=true" /> -->
+                <h:commandButton value="Seen By All" action="all" />
+                <h:commandButton value="This Page"/>
+            </p>
+        </h:form>
+        <h2>Animal Detail Output:</h2>
+        <p>
+            Do you like to receive mail :
+            <!-- method binding-->
+            <h:outputText value="#{animalBean.mailMe}" />
+        </p>
+        <p>
+            Type:
+            <h:outputText value="#{animalBean.type}" />
+        </p>
+        <p>
+            Total No:
+            <h:outputText value="#{animalBean.totalNo}" />
+        </p>
+        <p>
+                <!-- Bean injection using @ManagedProperty(value = "#{mySessionBean}") annotation example: -->
+            Bean Injection Random Number:
+            <h:outputText value="#{animalBean.mySessionBean.number}" />
+        </p>
+        <p>
+            <!-- EL Operation -->
+            EL Operation - Animal No * 100 :
+            <h:outputText value="#{animalBean.totalNo * 100}"
+                          rendered="#{animalBean.totalNo > 0}" />
+        </p>
+    </h:body>
 </html>

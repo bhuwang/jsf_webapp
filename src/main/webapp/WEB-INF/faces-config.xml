@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-	version="2.2">
-	<navigation-rule>
-		<!-- example of explicit navigation -->
-		<display-name>index.xhtml</display-name>
-		<from-view-id>/index.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>failure</from-outcome>
-			<to-view-id>/errorPage.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/show.xhtml</to-view-id>
-			<!-- explictly mention page to be redirect -->
-			<redirect/>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<display-name>SeenByAll</display-name>
-		<!-- example of wildcard navigation rule -->
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-outcome>all</from-outcome>
-			<!-- we also can have condition navigation rule -->
-			<if>#{animalBean.mailMe}</if>
-			<to-view-id>/seen-by-all.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+              version="2.2">
+    <lifecycle>
+        <phase-listener>com.bhuwan.jsf.listeners.PhaseListnerDemo</phase-listener>
+    </lifecycle>
+    <navigation-rule>
+        <!-- example of explicit navigation -->
+        <display-name>index.xhtml</display-name>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/errorPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/show.xhtml</to-view-id>
+            <!-- explictly mention page to be redirect -->
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <display-name>SeenByAll</display-name>
+        <!-- example of wildcard navigation rule -->
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>all</from-outcome>
+            <!-- we also can have condition navigation rule -->
+            <if>#{animalBean.mailMe}</if>
+            <to-view-id>/seen-by-all.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
