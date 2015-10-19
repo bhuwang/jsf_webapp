@@ -4,7 +4,14 @@
   <artifactId>jsf_webapp</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
-  <dependencies>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+    <dependencies>
   	<dependency>
   		<groupId>com.sun.faces</groupId>
   		<artifactId>jsf-api</artifactId>
@@ -15,5 +22,15 @@
   		<artifactId>jsf-impl</artifactId>
   		<version>2.2.12</version>
   	</dependency>
-  </dependencies>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.jpa</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+    </dependencies>
 </project>

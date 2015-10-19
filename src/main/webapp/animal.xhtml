@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Animal</title>
+        <style>
+            .odd{
+                background-color: #ccc;
+            }   
+            .even{
+                background-color: #ff8;
+            }
+            .header{
+                background-color: #ffe08b;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable headerClass="header" rowClasses="odd,even" value="#{animalAppBean.animalList}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Animal Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.animalId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Total No"/>
+                        </f:facet>
+                        <h:inputText rendered="#{animalAppBean.selectedAnimal eq item}" value="#{item.totalNo}"/>
+                        <h:outputText rendered="#{animalAppBean.selectedAnimal ne item}" value="#{item.totalNo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:inputText rendered="#{animalAppBean.selectedAnimal eq item}" value="#{item.type}"/>
+                        <h:outputText rendered="#{animalAppBean.selectedAnimal ne item}" value="#{item.type}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category Id"/>
+                        </f:facet>
+                        <h:inputText rendered="#{animalAppBean.selectedAnimal eq item}" value="#{item.categoryId.categoryType}"/>
+                        <h:outputText rendered="#{animalAppBean.selectedAnimal ne item}" value="#{item.categoryId.categoryType}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actions"/>
+                        </f:facet>
+                        <h:commandButton value="Delete" action="#{animalAppBean.removeAnimal(item.animalId)}"></h:commandButton>
+                        <h:commandButton rendered="#{animalAppBean.selectedAnimal ne item}" value="Edit" action="#{animalAppBean.selectForModification(item)}"></h:commandButton>
+                        <h:commandButton rendered="#{animalAppBean.selectedAnimal eq item}" value="Update" action="#{animalAppBean.updateAnimal}"></h:commandButton>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
